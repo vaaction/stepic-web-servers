@@ -1,6 +1,6 @@
 from wsgiref.util import setup_testing_defaults
 from wsgiref.simple_server import make_server
-from urllib.parse import parse_qs
+from urlparse import parse_qs
 
 
 def parse_params(params):

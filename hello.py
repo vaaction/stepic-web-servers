@@ -1,4 +1,4 @@
-from urllib.parse import parse_qs
+from urlparse import parse_qs
 
 
 def parse_params(params):
