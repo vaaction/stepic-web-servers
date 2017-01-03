@@ -11,7 +11,9 @@ def parse_params(params):
 
 def app(environ, start_response):
     query = environ['QUERY_STRING']
-    params = parse_qs(query, strict_parsing=True)
+    params = query
+    if query is not '':
+        params = parse_qs(query, strict_parsing=True)
     res = parse_params(params)
     status = '200 OK'
     response_headers = [('Content-type', 'text/plain')]
