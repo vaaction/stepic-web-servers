@@ -19,7 +19,7 @@ def app(environ, start_response):
     status = '200 OK'
     response_headers = [('Content-type', 'text/plain')]
     start_response(status, response_headers)
-    return [res.encode()]
+    return res
 
 httpd = make_server('', 8000, app)
 print("Serving on port 8000...")
