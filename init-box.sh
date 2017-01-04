@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#sudo rm /etc/nginx/sites-enabled/default
-sudo ln -s /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
+sudo ln -sf /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
-sudo gunicorn ask.wsgi -c etc/gunicorn_ask.conf.py --chdir /home/ibukanov/IdeaProjects/stepic-web-servers/ask
+#sudo gunicorn -c etc/gunicorn_ask.conf.py /home/box/web/ask ask.wsgi:application
+sudo gunicorn hello:app -c etc/gunicorn.conf.py &
 #sudo /etc/init.d/mysql start
