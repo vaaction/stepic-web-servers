@@ -1,5 +1,6 @@
 from wsgiref.simple_server import make_server
 from urlparse import parse_qs
+from ask import wsgi
 
 
 def parse_params(params):
@@ -21,6 +22,6 @@ def app(environ, start_response):
     start_response(status, response_headers)
     return res
 
-httpd = make_server('', 8000, app)
+httpd = make_server('', 8000, wsgi.application)
 print("Serving on port 8000...")
 httpd.serve_forever()
