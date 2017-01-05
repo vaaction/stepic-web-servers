@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Question(models.Model):
+    objects = QuestionManager()
     title = models.CharField(max_length=255)
     text = models.TextField()
     added_at = models.DateTimeField(blank=True, auto_now_add=True)
@@ -18,14 +19,10 @@ class Answer(models.Model):
     author = models.ForeignKey(User)
 
 
-class QuestionManager:
-    def __init__(self):
-        pass
+class QuestionManager(models.Manager):
 
-    @staticmethod
     def new():
         return Question.objects.order_by(Question.added_at)[:10]
 
-    @staticmethod
     def popular():
         return Question.objects.order_by(Question.rating)
